@@ -31,7 +31,7 @@ To use the helper, obtain the shared instance:
 ```swift
 let constraintBuilder = SRConstraintBuilder.shared
 ```
-###Example
+### Example
 
 ```swift
 let constraintBuilder = SRConstraintBuilder.shared
@@ -47,7 +47,7 @@ constraintBuilder.createConstraint(type: .centerY, item: subview, relatedBy: .eq
 constraintBuilder.updateConstraint(type: .centerX, view: subview, constant: 10.0)
 ```
 
-###StackView Example
+### StackView Example
 ```swift
 let constraintBuilder = SRConstraintBuilder.shared
 
