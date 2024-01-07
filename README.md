@@ -46,3 +46,20 @@ constraintBuilder.createConstraint(type: .centerY, item: subview, relatedBy: .eq
 // Update constraint constant
 constraintBuilder.updateConstraint(type: .centerX, view: subview, constant: 10.0)
 ```
+
+###StackView Example
+```swift
+let constraintBuilder = SRConstraintBuilder.shared
+
+// Add Arranged Subview to stackView
+.addArrangedSubviewTo(containerStackView: stackView, view: titleLabel)
+.addArrangedSubviewTo(containerStackView: stackView, view: imageView)
+
+// Add subview to container
+constraintBuilder.addSubviewTo(containerView: mainView, view: stackView)
+
+// Create and activate constraints
+.createConstraint(type: .top, item: stackView, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attributeTo: .top, multiplier: 1, constant: 16)
+.createConstraint(type: .leading, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .leading, multiplier: 1, constant: 10)
+.createConstraint(type: .trailing, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .trailing, multiplier: 1, constant: -10)
+```
