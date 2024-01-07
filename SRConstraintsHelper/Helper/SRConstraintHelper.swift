@@ -40,6 +40,13 @@ class SRConstraintBuilder {
         containerView.addSubview(view)
         return self
     }
+    
+    @discardableResult
+    func addArrangedSubviewTo(containerStackView: UIStackView, view: UIView) -> Self {
+        view.translatesAutoresizingMaskIntoConstraints = false
+        containerStackView.addArrangedSubview(view)
+        return self
+    }
 
     @discardableResult
     func createConstraint(type: ConstraintType, item: Any, relatedBy: NSLayoutConstraint.Relation, toItem: Any?, attributeTo: NSLayoutConstraint.Attribute, multiplier: CGFloat, constant: CGFloat) -> Self {

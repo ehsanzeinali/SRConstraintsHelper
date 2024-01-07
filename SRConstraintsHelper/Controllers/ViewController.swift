@@ -25,12 +25,12 @@ class ViewController: UIViewController {
         return imageView
     }()
     
-    private lazy var titleLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .label
         label.textAlignment = .left
         label.font = .systemFont(ofSize: 18, weight: .semibold)
-        label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        label.text = "New York City comprises 5 boroughs sitting where the Hudson River meets the Atlantic Ocean. At its core is Manhattan, a densely populated borough that’s among the world’s major commercial, financial and cultural centers. Its iconic sites include skyscrapers such as the Empire State Building and sprawling Central Park. Broadway theater is staged in neon-lit Times Square."
         label.numberOfLines = 0
         return label
     }()
@@ -42,6 +42,11 @@ class ViewController: UIViewController {
         button.backgroundColor = .systemPink
         button.setTitle("Navigate", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        let action = UIAction { [weak self] action in
+            let stackVC = StackViewController()
+            self?.present(stackVC, animated: true, completion: nil)
+        }
+        button.addAction(action, for: .touchUpInside)
         return button
     }()
 }
@@ -50,15 +55,15 @@ extension ViewController {
     private func layoutView() {
         SRConstraintBuilder.shared
             .addSubviewTo(containerView: view, view: imageView)
-            .addSubviewTo(containerView: view, view: titleLabel)
+            .addSubviewTo(containerView: view, view: descriptionLabel)
             .addSubviewTo(containerView: view, view: button)
             .createConstraint(type: .top, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .top, multiplier: 1, constant: 0)
             .createConstraint(type: .centerX, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
             .createConstraint(type: .width, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 1, constant: 0)
             .createConstraint(type: .height, item: imageView, relatedBy: .equal, toItem: imageView, attributeTo: .width, multiplier: 9 / 16, constant: 0)
-            .createConstraint(type: .top, item: titleLabel, relatedBy: .equal, toItem: imageView, attributeTo: .bottom, multiplier: 1, constant: 16)
-            .createConstraint(type: .centerX, item: titleLabel, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
-            .createConstraint(type: .width, item: titleLabel, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 0.9, constant: 0)
+            .createConstraint(type: .top, item: descriptionLabel, relatedBy: .equal, toItem: imageView, attributeTo: .bottom, multiplier: 1, constant: 16)
+            .createConstraint(type: .centerX, item: descriptionLabel, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
+            .createConstraint(type: .width, item: descriptionLabel, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 0.9, constant: 0)
             .createConstraint(type: .centerX, item: button, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
             .createConstraint(type: .width, item: button, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 0.9, constant: 0)
             .createConstraint(type: .bottom, item: button, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attributeTo: .bottom, multiplier: 1, constant: -16)
