@@ -37,14 +37,14 @@ let constraintBuilder = SRConstraintBuilder.shared
 let constraintBuilder = SRConstraintBuilder.shared
 
 // Add subview to container
-constraintBuilder.addSubviewTo(containerView: mainView, view: subview)
+constraintBuilder.addSubviewsTo(containerView: view, views: [imageView,descriptionLabel,button])
 
 // Create and activate constraints
-constraintBuilder.createConstraint(type: .centerX, item: subview, relatedBy: .equal, toItem: mainView, attributeTo: .centerX, multiplier: 1.0, constant: 0.0)
-constraintBuilder.createConstraint(type: .centerY, item: subview, relatedBy: .equal, toItem: mainView, attributeTo: .centerY, multiplier: 1.0, constant: 0.0)
+constraintBuilder.createConstraint(forItem: subview, withConstraintType: .top, relatedBy: .equal, toItem: mainView, withAttribute: .top, multiplier: 1, constant: 0)
+constraintBuilder.createConstraint(forItem: subview, withConstraintType: .centerX, relatedBy: .equal, toItem: mainView, withAttribute: .centerX, multiplier: 1, constant: 0)
 
 // Update constraint constant
-constraintBuilder.updateConstraint(type: .centerX, view: subview, constant: 10.0)
+constraintBuilder.updateConstraint(view: subview, withConstraintType: .centerX , constant: 10.0)
 ```
 
 ### StackView Example
@@ -52,14 +52,12 @@ constraintBuilder.updateConstraint(type: .centerX, view: subview, constant: 10.0
 let constraintBuilder = SRConstraintBuilder.shared
 
 // Add Arranged Subview to stackView
-.addArrangedSubviewTo(containerStackView: stackView, view: titleLabel)
-.addArrangedSubviewTo(containerStackView: stackView, view: imageView)
+constraintBuilder.addArrangedSubviewsTo(containerStackView: stackView, views: [subview1,subview2,...])
 
 // Add subview to container
 constraintBuilder.addSubviewTo(containerView: mainView, view: stackView)
 
 // Create and activate constraints
-.createConstraint(type: .top, item: stackView, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attributeTo: .top, multiplier: 1, constant: 16)
-.createConstraint(type: .leading, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .leading, multiplier: 1, constant: 10)
-.createConstraint(type: .trailing, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .trailing, multiplier: 1, constant: -10)
+constraintBuilder.createConstraint(forItem: subview, withConstraintType: .top, relatedBy: .equal, toItem: mainView, withAttribute: .top, multiplier: 1, constant: 0)
+constraintBuilder.createConstraint(forItem: subview, withConstraintType: .centerX, relatedBy: .equal, toItem: mainView, withAttribute: .centerX, multiplier: 1, constant: 0)
 ```
