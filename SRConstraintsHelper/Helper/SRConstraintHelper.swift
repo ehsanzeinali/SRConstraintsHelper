@@ -8,21 +8,6 @@
 import Foundation
 import UIKit
 
-// MARK: - ConstraintType
-
-enum ConstraintType: String {
-    case top
-    case bottom
-    case leading
-    case trailing
-    case centerX
-    case centerY
-    case height
-    case width
-    case left
-    case right
-}
-
 // MARK: - SRConstraintBuilder
 
 class SRConstraintBuilder {
@@ -42,55 +27,75 @@ class SRConstraintBuilder {
     }
     
     @discardableResult
+    func addSubviewsTo(containerView: UIView, views: [UIView]) -> Self {
+        views.forEach {[weak self] view in
+            guard let _ = self else {return}
+            view.translatesAutoresizingMaskIntoConstraints = false
+            containerView.addSubview(view)
+        }
+        return self
+    }
+    
+    @discardableResult
     func addArrangedSubviewTo(containerStackView: UIStackView, view: UIView) -> Self {
         view.translatesAutoresizingMaskIntoConstraints = false
         containerStackView.addArrangedSubview(view)
         return self
     }
+    
+    @discardableResult
+    func addArrangedSubviewsTo(containerStackView: UIStackView, views: [UIView]) -> Self {
+        views.forEach {[weak self] view in
+            guard let _ = self else {return}
+            view.translatesAutoresizingMaskIntoConstraints = false
+            containerStackView.addArrangedSubview(view)
+        }
+        return self
+    }
 
     @discardableResult
-    func createConstraint(type: ConstraintType, item: Any, relatedBy: NSLayoutConstraint.Relation, toItem: Any?, attributeTo: NSLayoutConstraint.Attribute, multiplier: CGFloat, constant: CGFloat) -> Self {
+    func createConstraint(forItem: Any, withConstraintType: ConstraintType, relatedBy: NSLayoutConstraint.Relation, toItem: Any?, withAttribute: NSLayoutConstraint.Attribute, multiplier: CGFloat? = 1, constant: CGFloat? = 0) -> Self {
         var constraint: NSLayoutConstraint?
-        switch type {
+        switch withConstraintType {
         case .top:
-            constraint = NSLayoutConstraint(item: item, attribute: .top, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .top, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .bottom:
-            constraint = NSLayoutConstraint(item: item, attribute: .bottom, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .bottom, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .leading:
-            constraint = NSLayoutConstraint(item: item, attribute: .leading, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .leading, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .trailing:
-            constraint = NSLayoutConstraint(item: item, attribute: .trailing, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .trailing, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .centerX:
-            constraint = NSLayoutConstraint(item: item, attribute: .centerX, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .centerX, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .centerY:
-            constraint = NSLayoutConstraint(item: item, attribute: .centerY, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .centerY, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .height:
-            constraint = NSLayoutConstraint(item: item, attribute: .height, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .height, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .width:
-            constraint = NSLayoutConstraint(item: item, attribute: .width, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .width, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .left:
-            constraint = NSLayoutConstraint(item: item, attribute: .left, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .left, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .right:
-            constraint = NSLayoutConstraint(item: item, attribute: .right, relatedBy: relatedBy, toItem: toItem, attribute: attributeTo, multiplier: multiplier, constant: constant)
-            constraint?.identifier = type.rawValue
+            constraint = NSLayoutConstraint(item: forItem, attribute: .right, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         }
         constraintsArray?.append(constraint ?? .init())
@@ -98,8 +103,8 @@ class SRConstraintBuilder {
     }
 
     @discardableResult
-    func updateConstraint(type: ConstraintType, view: UIView, constant: CGFloat) -> Self {
-        guard let constraintIndex = view.constraints.firstIndex(where: { $0.identifier == type.rawValue }) else {
+    func updateConstraint(of view: UIView, withConstraintType: ConstraintType , constant: CGFloat) -> Self {
+        guard let constraintIndex = view.constraints.firstIndex(where: { $0.identifier == withConstraintType.rawValue }) else {
             return self
         }
         view.constraints[constraintIndex].constant = constant

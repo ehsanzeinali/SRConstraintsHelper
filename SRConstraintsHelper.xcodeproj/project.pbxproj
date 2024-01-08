@@ -15,6 +15,7 @@
 		01F48D5D2B4890E200E28E93 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01F48D5B2B4890E200E28E93 /* LaunchScreen.storyboard */; };
 		01F48D652B4890F200E28E93 /* SRConstraintHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F48D642B4890F200E28E93 /* SRConstraintHelper.swift */; };
 		7C4A4D9F2B4ABABA009803F1 /* StackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C4A4D9E2B4ABABA009803F1 /* StackViewController.swift */; };
+		D55566612B4BEAEA00435227 /* ConstraintType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D55566602B4BEAEA00435227 /* ConstraintType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		01F48D5E2B4890E200E28E93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		01F48D642B4890F200E28E93 /* SRConstraintHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SRConstraintHelper.swift; sourceTree = "<group>"; };
 		7C4A4D9E2B4ABABA009803F1 /* StackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewController.swift; sourceTree = "<group>"; };
+		D55566602B4BEAEA00435227 /* ConstraintType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				01F48D642B4890F200E28E93 /* SRConstraintHelper.swift */,
+				D55566602B4BEAEA00435227 /* ConstraintType.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D55566612B4BEAEA00435227 /* ConstraintType.swift in Sources */,
 				01F48D552B4890E100E28E93 /* ViewController.swift in Sources */,
 				01F48D652B4890F200E28E93 /* SRConstraintHelper.swift in Sources */,
 				7C4A4D9F2B4ABABA009803F1 /* StackViewController.swift in Sources */,

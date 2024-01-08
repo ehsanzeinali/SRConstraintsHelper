@@ -54,14 +54,12 @@ class StackViewController: UIViewController {
 extension StackViewController {
     private func layoutView() {
         SRConstraintBuilder.shared
-            .addArrangedSubviewTo(containerStackView: stackView, view: titleLabel)
-            .addArrangedSubviewTo(containerStackView: stackView, view: imageView)
-            .addArrangedSubviewTo(containerStackView: stackView, view: descriptionLabel)
+            .addArrangedSubviewsTo(containerStackView: stackView, views: [titleLabel,imageView,descriptionLabel])
             .addSubviewTo(containerView: view, view: stackView)
-            .createConstraint(type: .top, item: stackView, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attributeTo: .top, multiplier: 1, constant: 16)
-            .createConstraint(type: .leading, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .leading, multiplier: 1, constant: 10)
-            .createConstraint(type: .trailing, item: stackView, relatedBy: .equal, toItem: view, attributeTo: .trailing, multiplier: 1, constant: -10)
-            .createConstraint(type: .width, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 1, constant: 0)
-            .createConstraint(type: .height, item: imageView, relatedBy: .equal, toItem: imageView, attributeTo: .width, multiplier: 9 / 16, constant: 0)
+            .createConstraint(forItem: stackView, withConstraintType: .top, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, withAttribute: .top, multiplier: 1, constant: 16)
+            .createConstraint(forItem: stackView, withConstraintType: .leading, relatedBy: .equal, toItem: view, withAttribute: .leading, multiplier: 1, constant: 10)
+            .createConstraint(forItem: stackView, withConstraintType: .trailing, relatedBy: .equal, toItem: view, withAttribute: .trailing, multiplier: 1, constant: -10)
+            .createConstraint(forItem: imageView, withConstraintType: .width, relatedBy: .equal, toItem: view, withAttribute: .width, multiplier: 1, constant: 0)
+            .createConstraint(forItem: imageView, withConstraintType: .height, relatedBy: .equal, toItem: imageView, withAttribute: .width, multiplier: 9 / 16, constant: 0)
     }
 }
