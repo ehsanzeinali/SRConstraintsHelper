@@ -24,7 +24,7 @@ class ViewController: UIViewController {
         imageView.image = .newyork
         return imageView
     }()
-    
+
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.textColor = .label
@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.clipsToBounds = true
@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         button.backgroundColor = .systemPink
         button.setTitle("Navigate", for: .normal)
         button.setTitleColor(.white, for: .normal)
-        let action = UIAction { [weak self] action in
+        let action = UIAction { [weak self] _ in
             let stackVC = StackViewController()
             self?.present(stackVC, animated: true, completion: nil)
         }
@@ -54,23 +54,21 @@ class ViewController: UIViewController {
 extension ViewController {
     private func layoutView() {
         SRConstraintBuilder.shared
-            .addSubviewTo(containerView: view, view: imageView)
-            .addSubviewTo(containerView: view, view: descriptionLabel)
-            .addSubviewTo(containerView: view, view: button)
-            .createConstraint(type: .top, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .top, multiplier: 1, constant: 0)
-            .createConstraint(type: .centerX, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
-            .createConstraint(type: .width, item: imageView, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 1, constant: 0)
-            .createConstraint(type: .height, item: imageView, relatedBy: .equal, toItem: imageView, attributeTo: .width, multiplier: 9 / 16, constant: 0)
-            .createConstraint(type: .top, item: descriptionLabel, relatedBy: .equal, toItem: imageView, attributeTo: .bottom, multiplier: 1, constant: 16)
-            .createConstraint(type: .centerX, item: descriptionLabel, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
-            .createConstraint(type: .width, item: descriptionLabel, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 0.9, constant: 0)
-            .createConstraint(type: .centerX, item: button, relatedBy: .equal, toItem: view, attributeTo: .centerX, multiplier: 1, constant: 0)
-            .createConstraint(type: .width, item: button, relatedBy: .equal, toItem: view, attributeTo: .width, multiplier: 0.9, constant: 0)
-            .createConstraint(type: .bottom, item: button, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, attributeTo: .bottom, multiplier: 1, constant: -16)
-            .createConstraint(type: .height, item: button, relatedBy: .equal, toItem: nil, attributeTo: .notAnAttribute, multiplier: 1, constant: 48)
-        
+            .addSubviewsTo(containerView: view, views: [imageView,descriptionLabel,button])
+            .createConstraint(forItem: imageView, withConstraintType: .top, relatedBy: .equal, toItem: view, withAttribute: .top, multiplier: 1, constant: 0)
+            .createConstraint(forItem: imageView, withConstraintType: .centerX, relatedBy: .equal, toItem: view, withAttribute: .centerX, multiplier: 1, constant: 0)
+            .createConstraint(forItem: imageView, withConstraintType: .width, relatedBy: .equal, toItem: view, withAttribute: .width, multiplier: 1, constant: 0)
+            .createConstraint(forItem: imageView, withConstraintType: .height, relatedBy: .equal, toItem: imageView, withAttribute: .width, multiplier: 9 / 16, constant: 0)
+            .createConstraint(forItem: descriptionLabel, withConstraintType: .top, relatedBy: .equal, toItem: imageView, withAttribute: .bottom, multiplier: 1, constant: 16)
+            .createConstraint(forItem: descriptionLabel, withConstraintType: .centerX, relatedBy: .equal, toItem: view, withAttribute: .centerX, multiplier: 1, constant: 0)
+            .createConstraint(forItem: descriptionLabel, withConstraintType: .width, relatedBy: .equal, toItem: view, withAttribute: .width, multiplier: 0.9, constant: 0)
+            .createConstraint(forItem: button, withConstraintType: .centerX, relatedBy: .equal, toItem: view, withAttribute: .centerX, multiplier: 1, constant: 0)
+            .createConstraint(forItem: button, withConstraintType: .width, relatedBy: .equal, toItem: view, withAttribute: .width, multiplier: 0.9, constant: 0)
+            .createConstraint(forItem: button, withConstraintType: .bottom, relatedBy: .equal, toItem: view.safeAreaLayoutGuide, withAttribute: .bottom, multiplier: 1, constant: -16)
+            .createConstraint(forItem: button, withConstraintType: .height, relatedBy: .equal, toItem: nil, withAttribute: .notAnAttribute, multiplier: 1, constant: 48)
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            SRConstraintBuilder.shared.updateConstraint(type: .height, view: self.button, constant: 100)
+            SRConstraintBuilder.shared.updateConstraint(of: self.button, withConstraintType: .height , constant: 100)
         }
     }
 }
