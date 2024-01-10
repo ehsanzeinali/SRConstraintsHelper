@@ -54,47 +54,47 @@ class SRConstraintBuilder {
     }
 
     @discardableResult
-    func createConstraint(forItem: Any, withConstraintType: ConstraintType, relatedBy: NSLayoutConstraint.Relation, toItem: Any?, withAttribute: NSLayoutConstraint.Attribute, multiplier: CGFloat? = 1, constant: CGFloat? = 0) -> Self {
+    func createConstraint(forItem: Any, withConstraintType: ConstraintType, relatedBy: NSLayoutConstraint.Relation? = .equal, toItem: Any?, withAttribute: NSLayoutConstraint.Attribute, multiplier: CGFloat? = 1, constant: CGFloat? = 0) -> Self {
         var constraint: NSLayoutConstraint?
         switch withConstraintType {
         case .top:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .top, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .top, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .bottom:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .bottom, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .bottom, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .leading:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .leading, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .leading, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .trailing:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .trailing, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .trailing, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .centerX:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .centerX, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .centerX, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .centerY:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .centerY, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .centerY, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .height:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .height, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .height, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .width:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .width, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .width, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .left:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .left, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .left, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         case .right:
-            constraint = NSLayoutConstraint(item: forItem, attribute: .right, relatedBy: relatedBy, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
+            constraint = NSLayoutConstraint(item: forItem, attribute: .right, relatedBy: relatedBy ?? .equal, toItem: toItem, attribute: withAttribute, multiplier: multiplier ?? 1, constant: constant ?? 0)
             constraint?.identifier = withConstraintType.rawValue
             constraint?.isActive = true
         }
